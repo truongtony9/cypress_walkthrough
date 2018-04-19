@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 import "./App.css";
 
@@ -15,6 +16,12 @@ class App extends Component {
         }
       ]
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    axios.post("/api/todos", { title: this.state.currentTodo });
   }
 
   handleChange = (prop, val) => {
@@ -25,14 +32,16 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header" />
-        <input
-          type="text"
-          onChange={e => this.handleChange("currentTodo", e.target.value)}
-          value={this.state.currentTodo}
-          className="new_todo"
-          autoFocus
-          placeholder="Add new Todo"
-        />
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            onChange={e => this.handleChange("currentTodo", e.target.value)}
+            value={this.state.currentTodo}
+            className="new_todo"
+            autoFocus
+            placeholder="Add new Todo"
+          />
+        </form>
         <List todos={this.state.todos} />
       </div>
     );
