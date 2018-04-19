@@ -11,7 +11,8 @@ class App extends Component {
     this.state = {
       todos: [
         {
-          title: "Teach Cypress Testing Suite"
+          title: "Teach Cypress Testing Suite",
+          currentTodo: ""
         }
       ]
     };
@@ -20,14 +21,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header" />
-        <TextField
+        <input
+          value={this.state.currentTodo}
           className="new_todo"
-          style={{
-            width: "60%",
-            marginBottom: "40px"
-          }}
-          floatingLabelText="Add new Todo"
-          hintText="Yes, another todo list..."
+          autoFocus
+          placeholder="Add new Todo"
         />
         <List todos={this.state.todos} />
       </div>
