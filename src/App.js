@@ -10,7 +10,8 @@ class App extends Component {
     this.state = {
       todos: [
         {
-          title: "Teach Cypress Testing Suite"
+          title: "Teach Cypress Testing Suite",
+          isComplete: false
         }
       ]
     };
