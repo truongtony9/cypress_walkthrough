@@ -21,6 +21,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header" />
         <TextField
+          className="new_todo"
           style={{
             width: "60%",
             marginBottom: "40px"
