@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-  Card,
-  CardActions,
-  CardHeader,
-  CardMedia,
-  CardTitle,
-  CardText
-} from "material-ui/Card";
+import { Card } from "material-ui/Card";
 
 class Todo extends Component {
   constructor(props) {
