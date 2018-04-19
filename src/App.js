@@ -20,15 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header" />
-        <TextField
-          className="new_todo"
-          style={{
-            width: "60%",
-            marginBottom: "40px"
-          }}
-          floatingLabelText="Add new Todo"
-          hintText="Yes, another todo list..."
-        />
+        <input className="new_todo" placeholder="Add new Todo" />
         <List todos={this.state.todos} />
       </div>
     );
