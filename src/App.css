@@ -27,3 +27,25 @@
     transform: rotate(360deg);
   }
 }
+.new_todo {
+  padding: 0px;
+  position: relative;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgba(0, 0, 0, 0.87);
+  cursor: inherit;
+  font-style: inherit;
+  font-variant: inherit;
+  font-weight: inherit;
+  font-stretch: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-family: inherit;
+  opacity: 1;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  height: 100%;
+  width: 60%;
+  margin-bottom: 40px;
+}
