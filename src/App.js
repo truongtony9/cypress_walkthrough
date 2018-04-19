@@ -12,7 +12,8 @@ class App extends Component {
       currentTodo: "",
       todos: [
         {
-          title: "Teach Cypress Testing Suite"
+          title: "Teach Cypress Testing Suite",
+          isComplete: false
         }
       ]
     };
