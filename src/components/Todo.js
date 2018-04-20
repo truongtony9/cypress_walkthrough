@@ -23,7 +23,7 @@ class Todo extends Component {
   render() {
     return (
       <div className="">
-        <Card style={styles.card}>
+        <Card className="todos" style={styles.card}>
           <p> {this.props.todo.title} </p>
           <i id="delete" style={styles.delete} className="material-icons">
             clear
