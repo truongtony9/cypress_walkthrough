@@ -22,7 +22,6 @@ class App extends Component {
 
   componentDidMount() {
     axios.get("/api/todos").then(({ data }) => {
-      console.log("data: ", data);
       this.setState({ todos: [...this.state.todos, ...data] });
     });
   }
