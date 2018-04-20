@@ -10,6 +10,7 @@ class Todo extends Component {
     return (
       <div className="">
         <Card
+          className="todos"
           style={{
             width: "60%",
             margin: "auto",

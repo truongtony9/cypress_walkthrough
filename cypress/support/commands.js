@@ -10,7 +10,19 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
+Cypress.Commands.add(
+  "seedAndVisit",
+  ({ inputVal = "", todos = "fixture:todos" } = {}) => {
+    cy.server();
+    cy.route("GET", "/api/todos", todos);
+    cy.route("POST", "/api/todos", {
+      id: 2,
+      title: inputVal,
+      isComplete: false
+    });
+    cy.visit("/");
+  }
+);
 //
 //
 // -- This is a child command --

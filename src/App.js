@@ -20,9 +20,27 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    axios.get("/api/todos").then(({ data }) => {
+      console.log("data: ", data);
+      this.setState({ todos: [...this.state.todos, ...data] });
+    });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    axios.post("/api/todos", { title: this.state.currentTodo });
+    axios
+      .post("/api/todos", {
+        title: this.state.currentTodo,
+        isComplete: false
+      })
+      .then(({ data }) => {
+        this.setState({
+          todos: [...this.state.todos, data],
+          currentTodo: ""
+        });
+      })
+      .catch(console.log);
   }
 
   handleChange = (prop, val) => {
