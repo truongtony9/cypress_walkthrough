@@ -8,7 +8,12 @@ class List extends Component {
   }
   render() {
     const list = this.props.todos.map((todo, ind) => (
-      <Todo todo={todo} key={ind} />
+      <Todo
+        index={ind}
+        deleteTodo={this.props.deleteTodo}
+        todo={todo}
+        key={ind}
+      />
     ));
     return <div>{list}</div>;
   }

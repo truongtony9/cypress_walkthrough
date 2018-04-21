@@ -20,6 +20,7 @@ Cypress.Commands.add(
       title: inputVal,
       isComplete: false
     });
+    cy.route("DELETE", "/api/todos", todos);
     cy.visit("/");
   }
 );

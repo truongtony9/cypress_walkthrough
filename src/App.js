@@ -18,12 +18,25 @@ class App extends Component {
       ]
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteTodo = this.deleteTodo.bind(this);
   }
 
   componentDidMount() {
     axios.get("/api/todos").then(({ data }) => {
       this.setState({ todos: [...this.state.todos, ...data] });
     });
+  }
+
+  deleteTodo(ind) {
+    console.log("ind: ", ind);
+    axios
+      .delete("/api/todos")
+      .then(({ data }) => {
+        console.log("data: ", data);
+        this.setState({ todos: data });
+        return data;
+      })
+      .catch(console.log);
   }
 
   handleSubmit(e) {
@@ -60,7 +73,7 @@ class App extends Component {
             placeholder="Add new Todo"
           />
         </form>
-        <List todos={this.state.todos} />
+        <List deleteTodo={this.deleteTodo} todos={this.state.todos} />
       </div>
     );
   }

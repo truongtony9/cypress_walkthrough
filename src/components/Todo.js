@@ -25,7 +25,12 @@ class Todo extends Component {
       <div className="">
         <Card className="todos" style={styles.card}>
           <p> {this.props.todo.title} </p>
-          <i id="delete" style={styles.delete} className="material-icons">
+          <i
+            onClick={e => this.props.deleteTodo(this.props.index)}
+            id="delete"
+            style={styles.delete}
+            className="material-icons"
+          >
             clear
           </i>
         </Card>
