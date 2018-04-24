@@ -9,10 +9,11 @@ class App extends Component {
     super(props);
     this.state = {
       todos: [
-        {
-          title: "Teach Cypress Testing Suite",
-          isComplete: false
-        }
+        // {
+        //   id: 1,
+        //   title: "Teach Cypress Testing Suite",
+        //   isComplete: false
+        // }
       ]
     };
   }

@@ -7,9 +7,11 @@ class List extends Component {
     this.state = {};
   }
   render() {
-    const list = this.props.todos.map((todo, ind) => (
-      <Todo todo={todo} key={ind} />
-    ));
+    const list = this.props.todos.map((todo, ind) => {
+      console.log("todo: ", todo);
+
+      return <Todo {...todo} key={ind} />;
+    });
     return <div>{list}</div>;
   }
 }
