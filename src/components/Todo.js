@@ -17,10 +17,7 @@ const styles = {
     position: "relative"
   },
   checkbox: {
-    position: "absolute",
-    top: "50%",
-    transform: "translate(0, 50%)",
-    left: 20
+    width: 100
   }
 };
 
@@ -37,8 +34,9 @@ class Todo extends Component {
           <div>
             {" "}
             <Checkbox
-              checkedIcon={<CheckBox style={styles.checkbox} />}
-              uncheckedIcon={<CheckBoxOutlineBlank style={styles.checkbox} />}
+              style={styles.checkbox}
+              checkedIcon={<CheckBox />}
+              uncheckedIcon={<CheckBoxOutlineBlank />}
               checked={this.props.isComplete}
             />
             {this.props.title}{" "}
