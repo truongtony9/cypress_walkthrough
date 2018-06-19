@@ -42,10 +42,6 @@ class App extends Component {
       .catch(console.log);
   };
 
-  handleChange = (prop, val) => {
-    this.setState({ [prop]: val });
-  };
-
   handleEditSelect = id => {
     this.setState({
       todos: this.state.todos.map(
@@ -73,7 +69,10 @@ class App extends Component {
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
-            onChange={e => this.handleChange("currentTodo", e.target.value)}
+            name="currentTodo"
+            onChange={({ target: { name, value } }) =>
+              this.setState({ [name]: value })
+            }
             value={this.state.currentTodo}
             className="new_todo"
             autoFocus
