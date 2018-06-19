@@ -6,40 +6,27 @@ import "./App.css";
 import List from "./components/List";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentTodo: "",
-      todos: [
-        {
-          title: "Teach Cypress Testing Suite",
-          isComplete: false
-        }
-      ]
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.deleteTodo = this.deleteTodo.bind(this);
-  }
-
+  state = {
+    currentTodo: "",
+    todos: []
+  };
   componentDidMount() {
     axios.get("/api/todos").then(({ data }) => {
-      this.setState({ todos: [...this.state.todos, ...data] });
+      this.setState({ todos: data });
     });
   }
 
-  deleteTodo(ind) {
-    console.log("ind: ", ind);
+  deleteTodo = id => {
     axios
-      .delete("/api/todos")
+      .delete(`/api/todos/${id}`)
       .then(({ data }) => {
-        console.log("data: ", data);
         this.setState({ todos: data });
         return data;
       })
       .catch(console.log);
-  }
+  };
 
-  handleSubmit(e) {
+  handleSubmit = e => {
     e.preventDefault();
     axios
       .post("/api/todos", {
@@ -48,15 +35,35 @@ class App extends Component {
       })
       .then(({ data }) => {
         this.setState({
-          todos: [...this.state.todos, data],
+          todos: data,
           currentTodo: ""
         });
       })
       .catch(console.log);
-  }
+  };
 
   handleChange = (prop, val) => {
     this.setState({ [prop]: val });
+  };
+
+  handleEditSelect = id => {
+    this.setState({
+      todos: this.state.todos.map(
+        c => (c.id === id ? Object.assign({}, c, { edit: true }) : c)
+      )
+    });
+  };
+  handleEditChange = ({ target: { value, id } }) => {
+    this.setState({
+      todos: this.state.todos.map(
+        c => (c.id === +id ? Object.assign({}, c, { title: value }) : c)
+      )
+    });
+  };
+  handleEditSubmit = (id, title) => {
+    axios.put(`/api/todos/${id}`, { title }).then(({ data }) => {
+      this.setState({ todos: data });
+    });
   };
 
   render() {
@@ -73,7 +80,13 @@ class App extends Component {
             placeholder="Add new Todo"
           />
         </form>
-        <List deleteTodo={this.deleteTodo} todos={this.state.todos} />
+        <List
+          deleteTodo={this.deleteTodo}
+          todos={this.state.todos}
+          handleEditSelect={this.handleEditSelect}
+          handleEditChange={this.handleEditChange}
+          handleEditSubmit={this.handleEditSubmit}
+        />
       </div>
     );
   }
