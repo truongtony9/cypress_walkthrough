@@ -19,6 +19,7 @@ class App extends Component {
     this.handleEditChange = this.handleEditChange.bind(this);
     this.handleEditSubmit = this.handleEditSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.completeTodo = this.completeTodo.bind(this);
   }
 
   componentDidMount() {
@@ -50,6 +51,15 @@ class App extends Component {
           todos: data,
           currentTodo: ""
         });
+      })
+      .catch(console.log);
+  }
+
+  completeTodo(id, isComplete) {
+    axios
+      .put(`/api/todos/${id}`, { isComplete })
+      .then(({ data }) => {
+        this.setState({ todos: data });
       })
       .catch(console.log);
   }
@@ -102,6 +112,7 @@ class App extends Component {
           handleEditSelect={this.handleEditSelect}
           handleEditChange={this.handleEditChange}
           handleEditSubmit={this.handleEditSubmit}
+          completeTodo={this.completeTodo}
         />
       </div>
     );

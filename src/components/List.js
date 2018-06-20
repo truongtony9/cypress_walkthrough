@@ -38,11 +38,25 @@ class List extends Component {
               value={todo.title}
             />
           ) : (
-            <p> {todo.title} </p>
+            <p
+              style={{
+                textDecoration: todo.isComplete ? "line-through" : "none"
+              }}
+            >
+              {" "}
+              {todo.title}{" "}
+            </p>
           )}
         </div>
 
         <div style={styles.buttons}>
+          <i
+            onClick={() => this.props.completeTodo(todo.id, !todo.isComplete)}
+            id="delete"
+            className="material-icons"
+          >
+            done
+          </i>
           <i
             onClick={() => this.props.handleEditSelect(todo.id)}
             className="material-icons"
