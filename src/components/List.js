@@ -39,9 +39,9 @@ class List extends Component {
             />
           ) : (
             <p
-              style={{
-                textDecoration: todo.isComplete ? "line-through" : "none"
-              }}
+              style={
+                todo.isComplete ? { textDecoration: "line-through" } : null
+              }
             >
               {todo.title}
             </p>
