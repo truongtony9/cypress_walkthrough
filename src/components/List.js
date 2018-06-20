@@ -43,8 +43,7 @@ class List extends Component {
                 textDecoration: todo.isComplete ? "line-through" : "none"
               }}
             >
-              {" "}
-              {todo.title}{" "}
+              {todo.title}
             </p>
           )}
         </div>

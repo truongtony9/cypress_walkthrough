@@ -36,9 +36,11 @@ class App extends Component {
       })
       .catch(console.log);
   }
-  handleChange({ target: { name, value } }) {
-    this.setState({ [name]: value });
+
+  handleChange(e) {
+    this.setState({ currentTodo: e.target.value });
   }
+
   handleSubmit(e) {
     e.preventDefault();
     axios
