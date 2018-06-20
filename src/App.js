@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { RaisedButton, TextField } from "material-ui";
 
 import "./App.css";
 
@@ -81,7 +82,8 @@ class App extends Component {
       <div className="App">
         <header className="App-header" />
         <form onSubmit={this.handleSubmit}>
-          <input
+          <TextField
+            data-cy-input
             type="text"
             name="currentTodo"
             onChange={this.handleChange}
@@ -90,6 +92,9 @@ class App extends Component {
             autoFocus
             placeholder="Add new Todo"
           />
+          <RaisedButton data-cy-submit type="submit">
+            Submit
+          </RaisedButton>
         </form>
         <List
           deleteTodo={this.deleteTodo}

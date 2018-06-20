@@ -15,7 +15,10 @@ app.use(json());
 
 app.get("/api/todos", (req, res) => res.status(200).json(todos));
 app.post("/api/todos", (req, res) => {
-  todos.push({ ...req.body, ...{ id: todos[todos.length - 1].id + 1 } });
+  todos.push({
+    ...req.body,
+    ...{ id: todos[todos.length - 1] ? todos[todos.length - 1].id + 1 : 0 }
+  });
   return res.status(200).json(todos);
 });
 app.put("/api/todos/:id", (req, res) => {

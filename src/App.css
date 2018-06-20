@@ -41,7 +41,6 @@
   padding: 0px;
   position: relative;
   border: none;
-  border-bottom: 1px solid #ccc;
   outline: none;
   background-color: rgba(0, 0, 0, 0);
   color: rgba(0, 0, 0, 0.87);
@@ -57,5 +56,5 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   height: 100%;
   width: 60%;
-  margin-bottom: 40px;
+  margin: 0 10px 40px 0;
 }
