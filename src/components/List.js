@@ -51,14 +51,15 @@ class List extends Component {
         <div style={styles.buttons}>
           <i
             onClick={() => this.props.completeTodo(todo.id, !todo.isComplete)}
-            id="delete"
             className="material-icons"
+            id="done"
           >
             done
           </i>
           <i
             onClick={() => this.props.handleEditSelect(todo.id)}
             className="material-icons"
+            id="edit"
           >
             edit
           </i>
