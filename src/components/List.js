@@ -50,7 +50,7 @@ class List extends Component {
             edit
           </i>
           <i
-            onClick={e => this.props.deleteTodo(todo.id)}
+            onClick={() => this.props.deleteTodo(todo.id)}
             id="delete"
             className="material-icons"
           >
