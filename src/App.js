@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { RaisedButton, TextField } from "material-ui";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { RaisedButton, TextField } from 'material-ui';
 
-import "./App.css";
+import './App.css';
 
-import List from "./components/List";
+import List from './components/List';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTodo: "",
+      currentTodo: '',
       todos: []
     };
     this.deleteTodo = this.deleteTodo.bind(this);
@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get("/api/todos").then(({ data }) => {
+    axios.get('/api/todos').then(({ data }) => {
       this.setState({ todos: data });
     });
   }
@@ -44,14 +44,14 @@ class App extends Component {
   handleSubmit(e) {
     e.preventDefault();
     axios
-      .post("/api/todos", {
+      .post('/api/todos', {
         title: this.state.currentTodo,
         isComplete: false
       })
       .then(({ data }) => {
         this.setState({
           todos: data,
-          currentTodo: ""
+          currentTodo: ''
         });
       })
       .catch(console.log);
